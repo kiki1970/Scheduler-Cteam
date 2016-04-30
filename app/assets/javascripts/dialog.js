@@ -44,7 +44,7 @@ $(function() {
         buttons:{
         	"削除":function(){
         		var id = $('#edit_form [name=id]').val();
-        		if(confirm("予定を削除しま\nよろしいですか？")){
+        		if(confirm("予定を削除します\nよろしいですか？")){
         			$.ajax({
             			type: "DELETE",
             			url: "/events/"+id+".json",
@@ -52,6 +52,7 @@ $(function() {
                 			$("#calendar").fullCalendar('refetchEvents');
             			}	
         			});
+        			$(this).dialog("close");
         		}
         	},
             "確定":function(){
