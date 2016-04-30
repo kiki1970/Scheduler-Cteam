@@ -1,13 +1,19 @@
 <h1>Calendar#index</h1>
 <p>Find me in app/views/calendar/index.html.erb</p>
 <div id="calendar"></div>
-　<div id="event_dialog" title="新規予定入力">
-	<form>
+<div id="event_dialog" title="新規予定入力">
+	<form id="event_form">
+		<label for="start">開始時間</label></br>
+        <input type="datetime-local" name="start" id="start" value=""/></br>
+        <label for="end">終了時間</label></br>
+        <input type="datetime-local" name="end" id="end" value=""/></br>
 		<label for="title">内容</label></br>
         <input type="text" name="title" id="title" value=""/></br>
         <label for="location">場所orURL</label></br>
-        <input type="text" name="location" id="location" value=""/>
+        <input type="text" name="location" id="location" value=""/></br>
+        <label for="reamrks">備考</label></br>
+        <input type="text" name="remarks" id="remarks" value=""/></br>
         <label for="allDay">終日</label></br>
-        <input type="checkbox" name="allDay" id="allDay" value=""/>
+        <input type="checkbox" name="allDay" id="allDay" value="1"/></br>
 	</form>
-　</div>
+</div>

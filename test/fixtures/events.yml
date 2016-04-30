@@ -2,14 +2,16 @@
 
 one:
   title: MyString
-  start: 2016-04-28 12:10:43
-  end: 2016-04-28 12:10:43
-  location_url: MyString
+  start: 2016-04-29 19:06:55
+  end: 2016-04-29 19:06:55
+  location: MyString
+  remarks: MyString
   allDay: false
 
 two:
   title: MyString
-  start: 2016-04-28 12:10:43
-  end: 2016-04-28 12:10:43
-  location_url: MyString
+  start: 2016-04-29 19:06:55
+  end: 2016-04-29 19:06:55
+  location: MyString
+  remarks: MyString
   allDay: false

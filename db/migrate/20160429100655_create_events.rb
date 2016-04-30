@@ -4,7 +4,8 @@ class CreateEvents < ActiveRecord::Migration
       t.string :title
       t.datetime :start
       t.datetime :end
-      t.string :location_url
+      t.string :location
+      t.string :remarks
       t.boolean :allDay
 
       t.timestamps null: false

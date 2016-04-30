@@ -8,7 +8,8 @@
       <th>Title</th>
       <th>Start</th>
       <th>End</th>
-      <th>Location url</th>
+      <th>Location</th>
+      <th>Remarks</th>
       <th>Allday</th>
       <th colspan="3"></th>
     </tr>
@@ -20,7 +21,8 @@
         <td><%= event.title %></td>
         <td><%= event.start %></td>
         <td><%= event.end %></td>
-        <td><%= event.location_url %></td>
+        <td><%= event.location %></td>
+        <td><%= event.remarks %></td>
         <td><%= event.allDay %></td>
         <td><%= link_to 'Show', event %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
