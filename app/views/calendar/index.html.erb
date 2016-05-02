@@ -1,5 +1,6 @@
 <h1>Calendar#index</h1>
 <div id="calendar"></div>
+<!-- 新規予定作成ダイアログデザイン -->
 <div id="event_dialog" title="新規予定入力">
 	<form id="event_form">
 		<label for="start">開始時間</label></br>
@@ -16,6 +17,7 @@
         <input type="checkbox" name="allDay" id="allDay" value="1"/></br>
 	</form>
 </div>
+<!-- 予定編集ダイアログデザイン -->
 <div id="edit_dialog" title="予定編集">
 	<form id="edit_form">
 		<input type="text" name="id" id="id" value=""/>
@@ -33,9 +35,10 @@
         <input type="checkbox" name="allDay" id="allDay" value="1"/></br>
 	</form>
 </div>
+<!-- 削除確認ダイアログデザイン -->
 <div id="delete_dialog" title="削除確認">
 	予定を削除します。</br>よろしいですか？
-	<form id="edit_form">
+	<form id="delete_form">
 		<input type="text" name="id" id="id" value=""/>
 	</form>
 </div>

@@ -1,4 +1,5 @@
 $(function() {
+	//予定作成ダイアログの挙動
     $( "#event_dialog" ).dialog({
         modal:true,
         autoOpen:false,
@@ -35,6 +36,7 @@ $(function() {
             }
         }
     });
+    //予定編集ダイアログの挙動
     $( "#edit_dialog" ).dialog({
     	modal:true,
         autoOpen:false,
@@ -77,6 +79,7 @@ $(function() {
         	}
         }
     });
+    //削除確認ダイアログの挙動
     $( "#delete_dialog" ).dialog({
     	modal:true,
         autoOpen:false,
@@ -85,6 +88,7 @@ $(function() {
         resizable:false,
         buttons:{
         	"OK":function(){
+        		var id = $('#delete_form [name=id]').val();
         		$.ajax({
             		type: "DELETE",
             		url: "/events/"+id+".json",
@@ -93,7 +97,7 @@ $(function() {
             		}
         		});
         		$(this).dialog("close");
-        		$("#edit_form").dialog("close");
+        		$("#edit_dialog").dialog("close");
         	},
         	"キャンセル":function(){
         		$(this).dialog("close");

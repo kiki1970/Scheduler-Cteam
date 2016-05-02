@@ -2,7 +2,7 @@
 // All this logic will automatically be available in application.js.
 $(document).ready(function() {
 
-	
+	//カレンダー選択時の操作
     var select = function(start, end) {
     	var st=moment(start).format('YYYY-MM-DDTHH:mm');
     	var en=moment(end).format('YYYY-MM-DDTHH:mm');
@@ -16,7 +16,7 @@ $(document).ready(function() {
     	}
        	calendar.fullCalendar('unselect');
 	};
-	
+	//予定クリック時の操作
 	var edit = function(event, jsEvent, view){
 		var st=moment(event.start).format('YYYY-MM-DDTHH:mm');
     	$("#edit_dialog").find("textarea, :text, select").val("").end().find(":checked").prop("checked", false);
@@ -36,7 +36,7 @@ $(document).ready(function() {
     		$('#edit_form [name=allDay]').prop("checked",true);
     	}
 	};
-	
+	//予定のドラッグ＆ドロップ、リサイズ時の操作
 	var updateEvent = function(event){
 		var data = {event: {title: event.title,
                 	start: moment(event.start).format('YYYY-MM-DDTHH:mm'),
@@ -53,7 +53,7 @@ $(document).ready(function() {
         	}
      	});
 	};
-
+	//カレンダーの各種設定
 	var calendar = $('#calendar').fullCalendar({
 		lang: 'ja',
 		axisFormat: 'H:mm',
