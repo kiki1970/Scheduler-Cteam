@@ -71,6 +71,7 @@ $(document).ready(function() {
         selectable: true,
         selectHelper: true,
         ignoreTimezone: false,
+        theme: true,
         select: select,
         eventClick: edit,
         eventResize: updateEvent,

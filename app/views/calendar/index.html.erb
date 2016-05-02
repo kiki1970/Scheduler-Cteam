@@ -1,5 +1,4 @@
 <h1>Calendar#index</h1>
-<p>Find me in app/views/calendar/index.html.erb</p>
 <div id="calendar"></div>
 <div id="event_dialog" title="新規予定入力">
 	<form id="event_form">
@@ -19,7 +18,7 @@
 </div>
 <div id="edit_dialog" title="予定編集">
 	<form id="edit_form">
-		<input type="text" name="id" id="id" value=""/></br>
+		<input type="text" name="id" id="id" value=""/>
 		<label for="start">開始時間</label></br>
         <input type="datetime-local" name="start" id="start" value=""/></br>
         <label for="end">終了時間</label></br>
@@ -32,5 +31,11 @@
         <input type="text" name="remarks" id="remarks" value=""/></br>
         <label for="allDay">終日</label></br>
         <input type="checkbox" name="allDay" id="allDay" value="1"/></br>
+	</form>
+</div>
+<div id="delete_dialog" title="削除確認">
+	予定を削除します。</br>よろしいですか？
+	<form id="edit_form">
+		<input type="text" name="id" id="id" value=""/>
 	</form>
 </div>

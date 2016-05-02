@@ -41,20 +41,7 @@ $(function() {
         height:400,
         width:250,
         resizable:false,
-        buttons:{
-        	"削除":function(){
-        		var id = $('#edit_form [name=id]').val();
-        		if(confirm("予定を削除します\nよろしいですか？")){
-        			$.ajax({
-            			type: "DELETE",
-            			url: "/events/"+id+".json",
-            			success: function() {
-                			$("#calendar").fullCalendar('refetchEvents');
-            			}	
-        			});
-        			$(this).dialog("close");
-        		}
-        	},
+        buttons:{        	
             "確定":function(){
 				var id = $('#edit_form [name=id]').val();
 				var title = $('#edit_form [name=title]').val();
@@ -81,7 +68,36 @@ $(function() {
             },
             "キャンセル":function(){
                 $(this).dialog("close");
-            }
+            },
+            "削除":function(){
+        		var id = $('#edit_form [name=id]').val();
+        		$('#delete_form [name=id]').hide();
+        		$('#delete_form [name=id]').val(id);
+				$("#delete_dialog").dialog("open");
+        	}
+        }
+    });
+    $( "#delete_dialog" ).dialog({
+    	modal:true,
+        autoOpen:false,
+        height:150,
+        width:250,
+        resizable:false,
+        buttons:{
+        	"OK":function(){
+        		$.ajax({
+            		type: "DELETE",
+            		url: "/events/"+id+".json",
+            		success: function() {
+                		$("#calendar").fullCalendar('refetchEvents');
+            		}
+        		});
+        		$(this).dialog("close");
+        		$("#edit_form").dialog("close");
+        	},
+        	"キャンセル":function(){
+        		$(this).dialog("close");
+        	}
         }
     });
 });
