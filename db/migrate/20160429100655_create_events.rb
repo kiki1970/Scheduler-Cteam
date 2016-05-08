@@ -4,7 +4,11 @@ class CreateEvents < ActiveRecord::Migration
       t.string :title
       t.datetime :start
       t.datetime :end
-      t.string :location
+      t.string :location1
+      t.string :location2
+      t.string :location3
+      t.string :location4
+      t.string :location5
       t.string :remarks
       t.boolean :allDay
 

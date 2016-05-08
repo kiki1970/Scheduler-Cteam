@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :events
   resources :events
+  resources :events
   get 'calendar/index'
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -3,6 +3,7 @@
 <!-- 新規予定作成ダイアログデザイン -->
 <div id="event_dialog" title="新規予定入力">
 	<form id="event_form">
+		<input type="text" name="location_cnt" id="location_cnt" value=""/>
 		<label for="start">開始時間</label></br>
         <input type="datetime-local" name="start" id="start" value=""/></br>
         <label for="end">終了時間</label></br>
@@ -10,7 +11,12 @@
 		<label for="title">内容</label></br>
         <input type="text" name="title" id="title" value=""/></br>
         <label for="location">場所orURL</label></br>
-        <input type="text" name="location" id="location" value=""/></br>
+        <input type="text" name="location1" id="location1" value=""/>
+        <input type="text" name="location2" id="location2" value=""/>
+        <input type="text" name="location3" id="location3" value=""/>
+        <input type="text" name="location4" id="location4" value=""/>
+        <input type="text" name="location5" id="location5" value=""/>
+        <input type="button" name="location_plus" id="location_plus" value="+" /></br>
         <label for="reamrks">備考</label></br>
         <input type="text" name="remarks" id="remarks" value=""/></br>
         <label for="allDay">終日</label></br>
@@ -21,6 +27,7 @@
 <div id="edit_dialog" title="予定編集">
 	<form id="edit_form">
 		<input type="text" name="id" id="id" value=""/>
+		<input type="text" name="location_cnt" id="location_cnt" value=""/>
 		<label for="start">開始時間</label></br>
         <input type="datetime-local" name="start" id="start" value=""/></br>
         <label for="end">終了時間</label></br>
@@ -28,7 +35,12 @@
 		<label for="title">内容</label></br>
         <input type="text" name="title" id="title" value=""/></br>
         <label for="location">場所orURL</label></br>
-        <input type="text" name="location" id="location" value=""/></br>
+        <input type="text" name="location1" id="location1" value=""/>
+        <input type="text" name="location2" id="location2" value=""/>
+        <input type="text" name="location3" id="location3" value=""/>
+        <input type="text" name="location4" id="location4" value=""/>
+        <input type="text" name="location5" id="location5" value=""/>
+        <input type="button" name="location_plus" id="location_plus" value="+" /></br>
         <label for="reamrks">備考</label></br>
         <input type="text" name="remarks" id="remarks" value=""/></br>
         <label for="allDay">終日</label></br>

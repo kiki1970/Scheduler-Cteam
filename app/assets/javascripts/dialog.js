@@ -12,13 +12,21 @@ $(function() {
 				var start = $('#event_form [name=start]').val();
 				console.log(start);
                 var end = $('#event_form [name=end]').val();
-                var location = $('#event_form [name=location]').val();
+                var location1 = $('#event_form [name=location1]').val();
+                var location2 = $('#event_form [name=location2]').val();
+                var location3 = $('#event_form [name=location3]').val();
+                var location4 = $('#event_form [name=location4]').val();
+                var location5 = $('#event_form [name=location5]').val();
                 var remarks = $('#event_form [name=remarks]').val();
                 var allDay = $('#event_form [name=allDay]:checked').val();
                 var data = {event: {title: title,
                             start: start,
                             end: end,
-                            location: location,
+                            location1: location1,
+                            location2: location2,
+                            location3: location3,
+                            location4: location4,
+                            location5: location5,
                             remarks: remarks, 
                             allDay: allDay}};
                 $.ajax({
@@ -49,13 +57,21 @@ $(function() {
 				var title = $('#edit_form [name=title]').val();
 				var start = $('#edit_form [name=start]').val();
                 var end = $('#edit_form [name=end]').val();
-                var location = $('#edit_form [name=location]').val();
+                var location1 = $('#edit_form [name=location1]').val();
+                var location2 = $('#edit_form [name=location2]').val();
+                var location3 = $('#edit_form [name=location3]').val();
+                var location4 = $('#edit_form [name=location4]').val();
+                var location5 = $('#edit_form [name=location5]').val();
                 var remarks = $('#edit_form [name=remarks]').val();
                 var allDay = $('#edit_form [name=allDay]:checked').val();
                 var data = {event: {title: title,
                             start: start,
                             end: end,
-                            location: location,
+                            location1: location1,
+                            location2: location2,
+                            location3: location3,
+                            location4: location4,
+                            location5: location5,
                             remarks: remarks, 
                             allDay: allDay}};
                 $.ajax({
@@ -104,4 +120,26 @@ $(function() {
         	}
         }
     });
+    
+    $( "#event_form [name=location_plus]").click(function(){
+		var cnt=Number($("#event_form [name=location_cnt]").val());
+    	$("#event_form [name=location"+cnt+"]").show();
+    	if(cnt>=5){
+    		$("#event_form [name=location_plus]").hide();
+    	}else{
+    		cnt=cnt+1;
+    		$("#event_form [name=location_cnt]").val(cnt);
+		}
+    });
+    
+    $( "#edit_form [name=location_plus]").click(function(){
+		var cnt=Number($("#edit_form [name=location_cnt]").val());
+    	$("#edit_form [name=location"+cnt+"]").show();
+    	if(cnt>=5){
+    		$("#edit_form [name=location_plus]").hide();
+    	}else{
+    		cnt=cnt+1;
+    		$("#edit_form [name=location_cnt]").val(cnt);
+		}
+	});
 });
