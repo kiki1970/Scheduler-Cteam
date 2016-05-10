@@ -3,7 +3,7 @@ $(function() {
     $( "#event_dialog" ).dialog({
         modal:true,
         autoOpen:false,
-        height:400,
+        height:410,
         width:250,
         resizable:false,
         buttons:{
@@ -12,21 +12,23 @@ $(function() {
 				var start = $('#event_form [name=start]').val();
 				console.log(start);
                 var end = $('#event_form [name=end]').val();
-                var location1 = $('#event_form [name=location1]').val();
-                var location2 = $('#event_form [name=location2]').val();
-                var location3 = $('#event_form [name=location3]').val();
-                var location4 = $('#event_form [name=location4]').val();
-                var location5 = $('#event_form [name=location5]').val();
+                var location = $('#event_form [name=location]').val();
+                var url1 = $('#event_form [name=url1]').val();
+                var url2 = $('#event_form [name=url2]').val();
+                var url3 = $('#event_form [name=url3]').val();
+                var url4 = $('#event_form [name=url4]').val();
+                var url5 = $('#event_form [name=url5]').val();
                 var remarks = $('#event_form [name=remarks]').val();
                 var allDay = $('#event_form [name=allDay]:checked').val();
                 var data = {event: {title: title,
                             start: start,
                             end: end,
-                            location1: location1,
-                            location2: location2,
-                            location3: location3,
-                            location4: location4,
-                            location5: location5,
+                            location: location,
+                            url1: url1,
+                            url2: url2,
+                            url3: url3,
+                            url4: url4,
+                            url5: url5,
                             remarks: remarks, 
                             allDay: allDay}};
                 $.ajax({
@@ -48,7 +50,7 @@ $(function() {
     $( "#edit_dialog" ).dialog({
     	modal:true,
         autoOpen:false,
-        height:400,
+        height:450,
         width:250,
         resizable:false,
         buttons:{        	
@@ -57,21 +59,23 @@ $(function() {
 				var title = $('#edit_form [name=title]').val();
 				var start = $('#edit_form [name=start]').val();
                 var end = $('#edit_form [name=end]').val();
-                var location1 = $('#edit_form [name=location1]').val();
-                var location2 = $('#edit_form [name=location2]').val();
-                var location3 = $('#edit_form [name=location3]').val();
-                var location4 = $('#edit_form [name=location4]').val();
-                var location5 = $('#edit_form [name=location5]').val();
+                var location = $('#edit_form [name=location]').val();
+                var url1 = $('#edit_form [name=url1]').val();
+                var url2 = $('#edit_form [name=url2]').val();
+                var url3 = $('#edit_form [name=url3]').val();
+                var url4 = $('#edit_form [name=url4]').val();
+                var url5 = $('#edit_form [name=url5]').val();
                 var remarks = $('#edit_form [name=remarks]').val();
                 var allDay = $('#edit_form [name=allDay]:checked').val();
                 var data = {event: {title: title,
                             start: start,
                             end: end,
-                            location1: location1,
-                            location2: location2,
-                            location3: location3,
-                            location4: location4,
-                            location5: location5,
+                            location: location,
+                            url1: url1,
+                            url2: url2,
+                            url3: url3,
+                            url4: url4,
+                            url5: url5,
                             remarks: remarks, 
                             allDay: allDay}};
                 $.ajax({
@@ -86,13 +90,7 @@ $(function() {
             },
             "キャンセル":function(){
                 $(this).dialog("close");
-            },
-            "削除":function(){
-        		var id = $('#edit_form [name=id]').val();
-        		$('#delete_form [name=id]').hide();
-        		$('#delete_form [name=id]').val(id);
-				$("#delete_dialog").dialog("open");
-        	}
+            }
         }
     });
     //削除確認ダイアログの挙動
@@ -121,25 +119,50 @@ $(function() {
         }
     });
     
-    $( "#event_form [name=location_plus]").click(function(){
-		var cnt=Number($("#event_form [name=location_cnt]").val());
-    	$("#event_form [name=location"+cnt+"]").show();
+    //確認ダイアログの挙動
+    $( "#confirm_dialog" ).dialog({
+    	modal:true,
+        autoOpen:false,
+        height:400,
+        width:250,
+        resizable:false,
+        buttons:{
+        	"削除":function(){
+        		var id = $('#edit_form [name=id]').val();
+        		$('#delete_form [name=id]').hide();
+        		$('#delete_form [name=id]').val(id);
+				$("#delete_dialog").dialog("open");
+        		$(this).dialog("close");
+        	},
+        	"編集":function(){
+        		$("#edit_dialog").dialog("open");
+        		$(this).dialog("close");
+        	},
+        	"閉じる":function(){
+        		$(this).dialog("close");
+        	}
+        }
+    });
+    
+    $( "#event_form [name=url_plus]").click(function(){
+		var cnt=Number($("#event_form [name=url_cnt]").val());
+    	$("#event_form [name=url"+cnt+"]").show();
     	if(cnt>=5){
-    		$("#event_form [name=location_plus]").hide();
+    		$("#event_form [name=url_plus]").hide();
     	}else{
     		cnt=cnt+1;
-    		$("#event_form [name=location_cnt]").val(cnt);
+    		$("#event_form [name=url_cnt]").val(cnt);
 		}
     });
     
-    $( "#edit_form [name=location_plus]").click(function(){
-		var cnt=Number($("#edit_form [name=location_cnt]").val());
-    	$("#edit_form [name=location"+cnt+"]").show();
+    $( "#edit_form [name=url_plus]").click(function(){
+		var cnt=Number($("#edit_form [name=url_cnt]").val());
+    	$("#edit_form [name=url"+cnt+"]").show();
     	if(cnt>=5){
-    		$("#edit_form [name=location_plus]").hide();
+    		$("#edit_form [name=url_plus]").hide();
     	}else{
     		cnt=cnt+1;
-    		$("#edit_form [name=location_cnt]").val(cnt);
+    		$("#edit_form [name=url_cnt]").val(cnt);
 		}
 	});
 });

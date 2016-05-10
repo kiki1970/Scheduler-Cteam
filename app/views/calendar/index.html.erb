@@ -3,20 +3,22 @@
 <!-- 新規予定作成ダイアログデザイン -->
 <div id="event_dialog" title="新規予定入力">
 	<form id="event_form">
-		<input type="text" name="location_cnt" id="location_cnt" value=""/>
+		<input type="text" name="url_cnt" id="url_cnt" value=""/>
 		<label for="start">開始時間</label></br>
         <input type="datetime-local" name="start" id="start" value=""/></br>
         <label for="end">終了時間</label></br>
         <input type="datetime-local" name="end" id="end" value=""/></br>
 		<label for="title">内容</label></br>
         <input type="text" name="title" id="title" value=""/></br>
-        <label for="location">場所orURL</label></br>
-        <input type="text" name="location1" id="location1" value=""/>
-        <input type="text" name="location2" id="location2" value=""/>
-        <input type="text" name="location3" id="location3" value=""/>
-        <input type="text" name="location4" id="location4" value=""/>
-        <input type="text" name="location5" id="location5" value=""/>
-        <input type="button" name="location_plus" id="location_plus" value="+" /></br>
+        <label for="location">場所</label></br>
+        <input type="text" name="location" id="location" value=""/></br>
+        <label for="url">URL</label></br>
+        <input type="text" name="url1" id="url1" value=""/>
+        <input type="text" name="url2" id="url2" value=""/>
+        <input type="text" name="url3" id="url3" value=""/>
+        <input type="text" name="url4" id="url4" value=""/>
+        <input type="text" name="url5" id="url5" value=""/>
+        <input type="button" name="url_plus" id="url_plus" value="+" /></br>
         <label for="reamrks">備考</label></br>
         <input type="text" name="remarks" id="remarks" value=""/></br>
         <label for="allDay">終日</label></br>
@@ -27,20 +29,22 @@
 <div id="edit_dialog" title="予定編集">
 	<form id="edit_form">
 		<input type="text" name="id" id="id" value=""/>
-		<input type="text" name="location_cnt" id="location_cnt" value=""/>
+		<input type="text" name="url_cnt" id="url_cnt" value=""/>
 		<label for="start">開始時間</label></br>
         <input type="datetime-local" name="start" id="start" value=""/></br>
         <label for="end">終了時間</label></br>
         <input type="datetime-local" name="end" id="end" value=""/></br>
 		<label for="title">内容</label></br>
         <input type="text" name="title" id="title" value=""/></br>
-        <label for="location">場所orURL</label></br>
-        <input type="text" name="location1" id="location1" value=""/>
-        <input type="text" name="location2" id="location2" value=""/>
-        <input type="text" name="location3" id="location3" value=""/>
-        <input type="text" name="location4" id="location4" value=""/>
-        <input type="text" name="location5" id="location5" value=""/>
-        <input type="button" name="location_plus" id="location_plus" value="+" /></br>
+        <label for="location">場所</label></br>
+        <input type="text" name="location" id="location" value=""/></br>
+        <label for="url">URL</label></br>
+        <input type="text" name="url1" id="url1" value=""/>
+        <input type="text" name="url2" id="url2" value=""/>
+        <input type="text" name="url3" id="url3" value=""/>
+        <input type="text" name="url4" id="url4" value=""/>
+        <input type="text" name="url5" id="url5" value=""/>
+        <input type="button" name="url_plus" id="url_plus" value="+" /></br>
         <label for="reamrks">備考</label></br>
         <input type="text" name="remarks" id="remarks" value=""/></br>
         <label for="allDay">終日</label></br>
@@ -53,4 +57,17 @@
 	<form id="delete_form">
 		<input type="text" name="id" id="id" value=""/>
 	</form>
+</div>
+<!-- 予定確認ダイアログデザイン -->
+<div id="confirm_dialog" title="予定確認">
+	<b><font size="3">内容</font></b></br>
+	<div id="confirm_title">title</div></br>
+	<b><font size="3">場所</font></b></br>
+	<div id="confirm_location">location</div></br>
+	<b><font size="3">URL</font></b></br>
+	<div id="confirm_url1">url1</div></br>
+	<b><font size="3">備考</font></b></br>
+	<div id="confirm_remarks">remarks</div></br>
+	<b><font size="3">終日</font></b></br>
+	<div id="confirm_allDay">allDay</div></br>
 </div>

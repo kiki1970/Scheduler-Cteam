@@ -11,17 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160429100655) do
+ActiveRecord::Schema.define(version: 20160510031628) do
 
   create_table "events", force: :cascade do |t|
     t.string   "title"
     t.datetime "start"
     t.datetime "end"
-    t.string   "location1"
-    t.string   "location2"
-    t.string   "location3"
-    t.string   "location4"
-    t.string   "location5"
+    t.string   "location"
+    t.string   "url1"
+    t.string   "url2"
+    t.string   "url3"
+    t.string   "url4"
+    t.string   "url5"
     t.string   "remarks"
     t.boolean  "allDay"
     t.datetime "created_at", null: false

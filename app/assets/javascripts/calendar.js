@@ -8,34 +8,32 @@ $(document).ready(function() {
     	var en=moment(end).format('YYYY-MM-DDTHH:mm');
     	var allDay = !start.hasTime() && !end.hasTime();
     	$("#event_dialog").find("textarea, :text, select").val("").end().find(":checked").prop("checked", false);
-    	$('#event_form [name=location_cnt]').hide();
-    	$('#event_form [name=location2]').hide();
-    	$('#event_form [name=location3]').hide();
-    	$('#event_form [name=location4]').hide();
-    	$('#event_form [name=location5]').hide();
+    	$('#event_form [name=url_cnt]').hide();
+    	$('#event_form [name=url2]').hide();
+    	$('#event_form [name=url3]').hide();
+    	$('#event_form [name=url4]').hide();
+    	$('#event_form [name=url5]').hide();
     	$("#event_dialog").dialog("open");
     	$('#event_form [name=start]').val(st);
     	$('#event_form [name=end]').val(en);
-    	$("#event_form [name=location_cnt]").val("2");
+    	$("#event_form [name=url_cnt]").val("2");
     	if(allDay){
     		$('#event_form [name=allDay]').prop("checked",true);
     	}
        	calendar.fullCalendar('unselect');
 	};
-	//予定クリック時の操作
-	var edit = function(event, jsEvent, view){
+	//編集画面
+	var edit = function(event){
 		var st=moment(event.start).format('YYYY-MM-DDTHH:mm');
 		var cnt=6;
     	$("#edit_dialog").find("textarea, :text, select").val("").end().find(":checked").prop("checked", false);
     	$('#edit_form [name=id]').hide();
-    	$('#edit_form [name=location_cnt]').hide();
-    	$('#edit_form [name=location2]').show();
-    	$('#edit_form [name=location3]').show();
-    	$('#edit_form [name=location4]').show();
-    	$('#edit_form [name=location5]').show();
-    	$("#edit_form [name=location_plus]").show();
-    	$("#edit_dialog").dialog("open");
-    	console.log(event.end);
+    	$('#edit_form [name=url_cnt]').hide();
+    	$('#edit_form [name=url2]').show();
+    	$('#edit_form [name=url3]').show();
+    	$('#edit_form [name=url4]').show();
+    	$('#edit_form [name=url5]').show();
+    	$("#edit_form [name=url_plus]").show();
     	$('#edit_form [name=start]').val(st);
     	if(event.end!=null){
     		var en=moment(event.end).format('YYYY-MM-DDTHH:mm');
@@ -43,36 +41,48 @@ $(document).ready(function() {
     	}else $('#edit_form [name=end]').val(st);
     	$('#edit_form [name=id]').val(event.id);
 		$('#edit_form [name=title]').val(event.title);
-		$('#edit_form [name=location1]').val(event.location1);
-		$('#edit_form [name=location2]').val(event.location2);
-		$('#edit_form [name=location3]').val(event.location3);
-		$('#edit_form [name=location4]').val(event.location4);
-		$('#edit_form [name=location5]').val(event.location5);
-		var a=event.location5;
-		console.log(a);
-		if(event.location5==""){
+		$('#edit_form [name=location]').val(event.location);
+		$('#edit_form [name=url1]').val(event.url1);
+		$('#edit_form [name=url2]').val(event.url2);
+		$('#edit_form [name=url3]').val(event.url3);
+		$('#edit_form [name=url4]').val(event.url4);
+		$('#edit_form [name=url5]').val(event.url5);
+		if(event.url5==""){
 			cnt=cnt-1;
-			$('#edit_form [name=location5]').hide();
-			if(event.location4==""){
+			$('#edit_form [name=url5]').hide();
+			if(event.url4==""){
 				cnt=cnt-1;
-				$('#edit_form [name=location4]').hide();
-				if(event.location3==""){
+				$('#edit_form [name=url4]').hide();
+				if(event.url3==""){
 					cnt=cnt-1;
-					$('#edit_form [name=location3]').hide();
-					if(event.location2==""){
+					$('#edit_form [name=url3]').hide();
+					if(event.url2==""){
 						cnt=cnt-1;
-						$('#edit_form [name=location2]').hide();
+						$('#edit_form [name=url2]').hide();
 					}
 				}
 			}
 		}else{
-			$("#edit_form [name=location_plus]").hide();
+			$("#edit_form [name=url_plus]").hide();
 		}
 		$('#edit_form [name=remarks]').val(event.remarks);
-		$("#edit_form [name=location_cnt]").val(cnt);
+		$("#edit_form [name=url_cnt]").val(cnt);
     	if(event.allDay){
     		$('#edit_form [name=allDay]').prop("checked",true);
     	}
+	};
+	//予定クリック時の操作
+	var confirm = function(event){
+		$("#confirm_dialog").dialog("open");
+		//document.getElementById("confirm_start").innerText = moment(event.start).format('YYYY年MM月DD日HH:mm');;
+		//document.getElementById("confirm_end").textContent = moment(event.end).format('YYYY年MM月DD日HH:mm');;
+		document.getElementById("confirm_title").textContent = event.title;
+		document.getElementById("confirm_location").textContent = event.location;
+		document.getElementById("confirm_url1").textContent = event.url1;
+		document.getElementById("confirm_remarks").textContent = event.remarks;
+		if(event.allDay) document.getElementById("confirm_allDay").textContent = "○";
+		else　document.getElementById("confirm_allDay").textContent = "×";
+		edit(event);
 	};
 	//予定のドラッグ＆ドロップ、リサイズ時の操作
 	var updateEvent = function(event){
@@ -80,6 +90,11 @@ $(document).ready(function() {
                 	start: moment(event.start).format('YYYY-MM-DDTHH:mm'),
                 	end: moment(event.end).format('YYYY-MM-DDTHH:mm'),
                 	location: event.location,
+                	url1: event.url1,
+                	url2: event.url2,
+                	url3: event.url3,
+                	url4: event.url4,
+                	url5: event.url5,
                 	remarks: event.remarks,
                 	allDay: event.allDay}};
     	$.ajax({
@@ -111,7 +126,7 @@ $(document).ready(function() {
         ignoreTimezone: false,
         theme: true,
         select: select,
-        eventClick: edit,
+        eventClick: confirm,
         eventResize: updateEvent,
         eventDrop: updateEvent
    });
