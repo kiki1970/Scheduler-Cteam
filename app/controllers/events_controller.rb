@@ -20,6 +20,20 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
   end
+  
+  #GET /events/search.json
+  def search
+    @result = Event.find_by("start > ? AND start < ? AND allDay = ?" ,event_params[:start],event_params[:end],false)
+    if @result == nil then
+      @result = Event.find_by("end > ? AND end < ? AND allDay = ?" ,event_params[:start],event_params[:end],false)
+      if @result == nil then
+        @result = Event.find_by("start < ? AND end > ? AND allDay = ?" ,event_params[:start],event_params[:end],false)
+      end
+    end
+    respond_to do |format|
+      format.json { render json: @result }
+    end
+  end
 
   # POST /events
   # POST /events.json
