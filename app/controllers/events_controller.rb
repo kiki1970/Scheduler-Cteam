@@ -23,11 +23,11 @@ class EventsController < ApplicationController
   
   #GET /events/search.json
   def search
-    @result = Event.find_by("start > ? AND start < ? AND allDay = ?" ,event_params[:start],event_params[:end],false)
+    @result = Event.find_by("start > ? AND start < ? AND allDay = ? AND NOT id = ?" ,event_params[:start],event_params[:end],false,event_params[:title])
     if @result == nil then
-      @result = Event.find_by("end > ? AND end < ? AND allDay = ?" ,event_params[:start],event_params[:end],false)
+      @result = Event.find_by("end > ? AND end < ? AND allDay = ? AND NOT id = ?" ,event_params[:start],event_params[:end],false,event_params[:title])
       if @result == nil then
-        @result = Event.find_by("start < ? AND end > ? AND allDay = ?" ,event_params[:start],event_params[:end],false)
+        @result = Event.find_by("start < ? AND end > ? AND allDay = ? AND NOT id = ?" ,event_params[:start],event_params[:end],false,event_params[:title])
       end
     end
     respond_to do |format|

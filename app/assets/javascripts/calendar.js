@@ -109,8 +109,6 @@ $(document).ready(function() {
 		url5.textContent = event.url5;
 		url5.parentNode.href = event.url5;
 		document.getElementById("confirm_remarks").textContent = event.remarks;
-		if(event.allDay) document.getElementById("confirm_allDay").textContent = "○";
-		else　document.getElementById("confirm_allDay").textContent = "×";
 		edit(event);
 	};
 	//予定のドラッグ＆ドロップ、リサイズ時の操作

@@ -131,6 +131,7 @@ $(function() {
 						url : "/events/search.json",
 						data : {
 							event : {
+								title : id,
 								start : st,
 								end : en
 							}
@@ -147,7 +148,7 @@ $(function() {
 										$("#calendar").fullCalendar('refetchEvents');
 									}
 								});
-								$(this).dialog("close");
+								$("#edit_dialog").dialog("close");
 							}
 						}
 					});
@@ -201,22 +202,27 @@ $(function() {
 		height : 400,
 		width : 250,
 		resizable : false,
-		buttons : {
-			"削除" : function() {
+		buttons : [{
+			text : "削除",
+			click : function() {
 				var id = $('#edit_form [name=id]').val();
 				$('#delete_form [name=id]').hide();
 				$('#delete_form [name=id]').val(id);
 				$("#delete_dialog").dialog("open");
 				$(this).dialog("close");
-			},
-			"編集" : function() {
+			}
+		}, {
+			text : "編集",
+			click : function() {
 				$("#edit_dialog").dialog("open");
 				$(this).dialog("close");
-			},
-			"閉じる" : function() {
+			}
+		}, {
+			text : "閉じる",
+			click : function() {
 				$(this).dialog("close");
 			}
-		}
+		}]
 	});
 
 	$("#double_caution").dialog({
