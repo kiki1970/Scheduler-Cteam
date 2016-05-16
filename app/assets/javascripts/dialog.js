@@ -104,7 +104,7 @@ $(function() {
 				var url5 = $('#edit_form [name=url5]').val();
 				var remarks = $('#edit_form [name=remarks]').val();
 				var allDay;
-				if ($('#event_form [name=allDay]:checked').val())
+				if ($('#edit_form [name=allDay]:checked').val())
 					allDay = true;
 				else
 					allDay = false;
@@ -147,7 +147,7 @@ $(function() {
 										$("#calendar").fullCalendar('refetchEvents');
 									}
 								});
-								$("#event_dialog").dialog("close");
+								$(this).dialog("close");
 							}
 						}
 					});

@@ -74,8 +74,23 @@ $(document).ready(function() {
 	//予定クリック時の操作
 	var confirm = function(event){
 		$("#confirm_dialog").dialog("open");
-		//document.getElementById("confirm_start").innerText = moment(event.start).format('YYYY年MM月DD日HH:mm');;
-		//document.getElementById("confirm_end").textContent = moment(event.end).format('YYYY年MM月DD日HH:mm');;
+		if(event.allDay){
+			if(moment(event.start).format('YYYY年MM月DD日')==moment(event.end).subtract(1, 'days').format('YYYY年MM月DD日')){
+				document.getElementById("confirm_start").textContent = moment(event.start).format('YYYY年MM月DD日');
+				document.getElementById("confirm_end").textContent = "";
+			}else{
+				document.getElementById("confirm_start").textContent = moment(event.start).format('YYYY年MM月DD日')+"～";
+				document.getElementById("confirm_end").textContent = moment(event.end).subtract(1, 'days').format('YYYY年MM月DD日');
+			}
+		}else{
+			if(moment(event.start).format('YYYY年MM月DD日')==moment(event.end).format('YYYY年MM月DD日')){
+				document.getElementById("confirm_start").textContent = moment(event.start).format('YYYY年MM月DD日HH:mm')+"～"+moment(event.end).format('HH:mm');
+				document.getElementById("confirm_end").textContent = "";
+			}else{
+				document.getElementById("confirm_start").textContent = moment(event.start).format('YYYY年MM月DD日HH:mm')+"～";
+				document.getElementById("confirm_end").textContent = moment(event.end).format('YYYY年MM月DD日HH:mm');
+			}
+		}
 		document.getElementById("confirm_title").textContent = event.title;
 		document.getElementById("confirm_location").textContent = event.location;
 		var url1=document.getElementById("confirm_url1");

@@ -9,7 +9,7 @@
         <label for="end">終了時間</label></br>
         <input type="datetime-local" name="end" id="end" value=""/></br>
 		<label for="title">内容</label></br>
-        <input type="text" name="title" id="title" value=""  disabled="disabled"/></br>
+        <input type="text" name="title" id="title" value=""/></br>
         <label for="location">場所</label></br>
         <input type="text" name="location" id="location" value=""/></br>
         <label for="url">URL</label></br>
@@ -67,18 +67,19 @@
 </div>
 <!-- 予定確認ダイアログデザイン -->
 <div id="confirm_dialog" title="予定確認">
+	<b><font size="3">日時</font></b></br>
+	<div id="confirm_start" >start</div>
+	<div id="confirm_end">end</div></br>
 	<b><font size="3">内容</font></b></br>
 	<div id="confirm_title">title</div></br>
 	<b><font size="3">場所</font></b></br>
 	<div id="confirm_location">location</div></br>
 	<b><font size="3">URL</font></b></br>
-	<div style="line-height: 0.8">
-	<a href="" target="_blank"><div id="confirm_url1">url1</div></a></br>
-	<a href="" target="_blank"><div id="confirm_url2">url1</div></a></br>
-	<a href="" target="_blank"><div id="confirm_url3">url1</div></a></br>
-	<a href="" target="_blank"><div id="confirm_url4">url1</div></a></br>
+	<a href="" target="_blank"><div id="confirm_url1">url1</div></a>
+	<a href="" target="_blank"><div id="confirm_url2">url1</div></a>
+	<a href="" target="_blank"><div id="confirm_url3">url1</div></a>
+	<a href="" target="_blank"><div id="confirm_url4">url1</div></a>
 	<a href="" target="_blank"><div id="confirm_url5">url1</div></a></br>
-	</div>
 	<b><font size="3">備考</font></b></br>
 	<div id="confirm_remarks">remarks</div></br>
 	<b><font size="3">終日</font></b></br>
