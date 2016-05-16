@@ -46,6 +46,7 @@ $(function() {
 						url : "/events/search.json",
 						data : {
 							event : {
+								title : 0,
 								start : st,
 								end : en
 							}
