@@ -78,10 +78,10 @@ $(function() {
 					});
 					$(this).dialog("close");
 				}
-			},
+			}/*,
 			"キャンセル" : function() {
 				$(this).dialog("close");
-			}
+			}*/
 		}
 	});
 	//予定編集ダイアログの挙動
@@ -164,10 +164,10 @@ $(function() {
 					});
 					$(this).dialog("close");
 				}
-			},
+			}/*,
 			"キャンセル" : function() {
 				$(this).dialog("close");
-			}
+			}*/
 		}
 	});
 	//削除確認ダイアログの挙動
@@ -218,12 +218,12 @@ $(function() {
 				$("#edit_dialog").dialog("open");
 				$(this).dialog("close");
 			}
-		}, {
+		}/*, {
 			text : "閉じる",
 			click : function() {
 				$(this).dialog("close");
 			}
-		}]
+		}*/]
 	});
 
 	$("#double_caution").dialog({
