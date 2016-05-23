@@ -2,9 +2,19 @@ Rails.application.routes.draw do
   resources :events do
     collection do                                                                                                                         
       get 'search'
+      post 'import'
+      post 'export'
     end
   end
   get 'calendar/index'
+  
+  
+  #resources 'products', only: :index do
+  #   collection { post :import }
+  #end
+  
+  #map.resources :events, :collection => {:csv => :get}
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

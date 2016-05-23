@@ -1,6 +1,5 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-
   # GET /events
   # GET /events.json
   def index
@@ -20,7 +19,7 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
   end
-  
+
   #GET /events/search.json
   def search
     @result = Event.find_by("start > ? AND start < ? AND allDay = ? AND NOT id = ?" ,event_params[:start],event_params[:end],false,event_params[:title])
@@ -65,6 +64,25 @@ class EventsController < ApplicationController
     end
   end
 
+  # INPORT
+  def import
+    Event.imp(event_params[:title])
+    respond_to do |format|
+      format.json { render json: @event }
+    end
+  end
+
+  # EXPORT
+
+  def export
+    output = CSV.generate do |csv|
+      Event.all.each do |event|
+        csv << Event.attributes.values_at(*updatable_attributes)
+      end
+    end
+    send_data(output, :type => 'text/csv', :filename => "companies_#{Time.now.strftime('%Y_%m_%d_%H_%M_%S')}.csv")
+  end
+
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
@@ -76,13 +94,14 @@ class EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def event_params
-      params.require(:event).permit(:title, :start, :end, :location, :url1, :url2, :url3, :url4, :url5, :remarks, :allDay)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def event_params
+    params.require(:event).permit(:title, :start, :end, :location, :url1, :url2, :url3, :url4, :url5, :remarks, :allDay)
+  end
 end

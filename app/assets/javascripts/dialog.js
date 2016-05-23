@@ -79,9 +79,9 @@ $(function() {
 					$(this).dialog("close");
 				}
 			}/*,
-			"キャンセル" : function() {
-				$(this).dialog("close");
-			}*/
+			 "キャンセル" : function() {
+			 $(this).dialog("close");
+			 }*/
 		}
 	});
 	//予定編集ダイアログの挙動
@@ -165,9 +165,9 @@ $(function() {
 					$(this).dialog("close");
 				}
 			}/*,
-			"キャンセル" : function() {
-				$(this).dialog("close");
-			}*/
+			 "キャンセル" : function() {
+			 $(this).dialog("close");
+			 }*/
 		}
 	});
 	//削除確認ダイアログの挙動
@@ -219,11 +219,11 @@ $(function() {
 				$(this).dialog("close");
 			}
 		}/*, {
-			text : "閉じる",
-			click : function() {
-				$(this).dialog("close");
-			}
-		}*/]
+		 text : "閉じる",
+		 click : function() {
+		 $(this).dialog("close");
+		 }
+		 }*/]
 	});
 
 	$("#double_caution").dialog({
@@ -330,6 +330,38 @@ $(function() {
 				});
 				$(this).dialog("close");
 				$("#edit_dialog").dialog("close");
+			},
+			"キャンセル" : function() {
+				$(this).dialog("close");
+			}
+		}
+	});
+
+	$("#import_dialog").dialog({
+		modal : true,
+		autoOpen : true,
+		height : 150,
+		width : 250,
+		resizable : false,
+		buttons : {
+			"OK" : function() {
+				var fd = new FormData();
+				if ($("input[name='import']").val() !== '') {
+					fd.append("file", $("input[name='import']").prop("files")[0]);
+				}
+				$.ajax({
+					type : "POST",
+					url : "/events/import",
+					data : {
+						event : {
+							title : "C:\\Users\\maeda\\Documents\\Book1.csv"
+						}
+					},
+					success : function() {
+						$("#calendar").fullCalendar('refetchEvents');
+					}
+				});
+				$(this).dialog("close");
 			},
 			"キャンセル" : function() {
 				$(this).dialog("close");
