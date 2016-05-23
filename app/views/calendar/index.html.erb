@@ -1,8 +1,8 @@
 <h1>Calendar#index</h1>
 <div id="calendar"></div>
 
-<input type="button" id=import value="CSVインポート">
-<input type="button" id=export value="CSVエクスポート">
+<input type="button" id="import" value="CSVインポート">
+<input type="button" id="export" value="CSVエクスポート">
 <!-- 新規予定作成ダイアログデザイン -->
 <div id="event_dialog" title="新規予定入力">
 	<form id="event_form">
@@ -127,9 +127,7 @@
 </div>
 
 <div id="import_dialog" title="インポートするファイルを選択">
-	<form action="" method="post">
-		<input type="file" id="import" name="import" style="display:none;" onchange="$('#fake_input_file').val($(this).val())">
-		<input type="button" value="ファイル選択" onClick="$('#import').click();">
-		<input id="fake_input_file" readonly type="text" value=""  onClick="$('#import').click();">
+	<form id="import_form" action="" method="post">
+		<input type="file" id="import" name="import">
 	</form>
 </div>

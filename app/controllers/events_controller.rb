@@ -75,12 +75,24 @@ class EventsController < ApplicationController
   # EXPORT
 
   def export
-    output = CSV.generate do |csv|
+    header = ["title", "start", "end", "location", "url1", "url2", "url3", "url4", "url5", "remarks", "allDay"]
+    output = CSV.generate("", :headers => header, :write_headers => true) do |csv|
       Event.all.each do |event|
-        csv << Event.attributes.values_at(*updatable_attributes)
+        csv << [event.title, event.start, event.end, event.location, event.url1, event.url2, event.url3, event.url4, event.url5, event.remarks, event.allDay]
       end
     end
-    send_data(output, :type => 'text/csv', :filename => "companies_#{Time.now.strftime('%Y_%m_%d_%H_%M_%S')}.csv")
+    filename="C:\\event_csv\\"+Time.now.strftime('%Y_%m_%d_%H_%M_%S')+".csv"
+    file = File.new(filename, 'w')
+    file.write(output)
+    file.close
+    respond_to do |format|
+      format.html do
+        @users = @users.page params[:page]
+      end
+      format.csv do
+        send_data output, filename: "users-#{Time.now.to_date.to_s}.csv", type: :csv
+      end
+    end
   end
 
   # DELETE /events/1

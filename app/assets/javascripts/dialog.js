@@ -339,22 +339,22 @@ $(function() {
 
 	$("#import_dialog").dialog({
 		modal : true,
-		autoOpen : true,
-		height : 150,
-		width : 250,
+		autoOpen : false,
+		height : 135,
+		width : 275,
 		resizable : false,
 		buttons : {
 			"OK" : function() {
-				var fd = new FormData();
-				if ($("input[name='import']").val() !== '') {
-					fd.append("file", $("input[name='import']").prop("files")[0]);
-				}
+				var file = $("#import_form [name=import]").val();
+				var regex = /\\|\\/;
+				var array = file.split(regex);
+				var filename = array[array.length - 1];
 				$.ajax({
 					type : "POST",
 					url : "/events/import",
 					data : {
 						event : {
-							title : "C:\\Users\\maeda\\Documents\\Book1.csv"
+							title : "C:\\event_csv\\"+filename
 						}
 					},
 					success : function() {
